@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Usuário</title>
+  <link href="https://cdn.jsdelivr.net/npm/materialize-css@1.0.0/dist/css/materialize.min.css" rel="stylesheet">
+
+  <script defer>
+
+    function salvarCadastro() {
+
+      const nome = document.getElementById('nome').value;
+      const login = document.getElementById('login').value;
+      const senha = document.getElementById('senha').value;
+      const email = document.getElementById('email').value;
+      const endereco = document.getElementById('endereco').value;
+      const telefone = document.getElementById('telefone').value;
+
+      if (nome && login && senha && email && endereco && telefone) {
+
+        const cliente = {
+          nome: nome,
+          login: login,
+          senha: senha,
+          email: email,
+          endereco: endereco,
+          telefone: telefone
+        };
+
+
+        localStorage.setItem('cliente', JSON.stringify(cliente));
+
+
+        alert('Cadastro realizado com sucesso!');
+
+        document.getElementById('formCadastro').reset();
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <div class="container">
+    <h4>Cadastro de Usuário</h4>
+    <form id="formCadastro" class="col s12">
+
+      <div class="input-field col s12">
+        <input type="text" id="nome" required>
+        <label for="nome">Nome</label>
+      </div>
+
+      <div class="input-field col s12">
+        <input type="text" id="login" required>
+        <label for="login">Login</label>
+      </div>
+
+      <div class="input-field col s12">
+        <input type="password" id="senha" required>
+        <label for="senha">Senha</label>
+      </div>
+
+      <div class="input-field col s12">
+        <input type="email" id="email" required>
+        <label for="email">E-mail</label>
+      </div>
+
+      <div class="input-field col s12">
+        <input type="text" id="endereco" required>
+        <label for="endereco">Endereço</label>
+      </div>
+
+      <div class="input-field col s12">
+        <input type="text" id="telefone" required>
+        <label for="telefone">Telefone</label>
+      </div>
+
+      <button type="button" class="btn waves-effect waves-light" onclick="salvarCadastro()">Gravar</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/materialize-css@1.0.0/dist/js/materialize.min.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $('select').formSelect();
+      M.updateTextFields(); 
+    });
+  </script>
+
+</body>
+</html>
